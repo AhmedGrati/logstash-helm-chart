@@ -1,0 +1,34 @@
+logstash:
+  persistence:
+    enabled: true
+  volumeClaimTemplate:
+    accessModes: [ "ReadWriteOnce" ]
+    resources:
+      requests:
+        storage: 8Gi
+  image: "docker.elastic.co/logstash/logstash-oss"
+  logstashConfig:
+    logstash.yml: |
+      http.host: 0.0.0.0
+  logstashPipeline:
+    uptime.conf: |
+      input { exec { command => "uptime" interval => 30 } }
+      output {
+        elasticsearch {
+          hosts => ["http://elastic.database:9200"]
+          user => '${ELASTICSEARCH_USERNAME}'
+          password => '${ELASTICSEARCH_PASSWORD}'
+          index => "logstash"
+        }
+      }
+  extraEnvs:
+    - name: "ELASTICSEARCH_USERNAME"
+      valueFrom:
+        secretKeyRef:
+          name: logstash-elastic-secret
+          key: username
+    - name: "ELASTICSEARCH_PASSWORD"
+      valueFrom:
+        secretKeyRef:
+          name: logstash-elastic-secret
+          key: password
