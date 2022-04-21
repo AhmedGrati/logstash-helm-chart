@@ -3,6 +3,7 @@ logstash:
     enabled: true
   volumeClaimTemplate:
     accessModes: [ "ReadWriteOnce" ]
+    storageClassName: "openebs-hostpath"
     resources:
       requests:
         storage: 8Gi
