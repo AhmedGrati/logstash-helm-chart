@@ -1,0 +1,12 @@
+modules:
+  - name: netflow
+    var.elasticsearch.hosts: elastic.database:9200
+    var.elasticsearch.username: elastic
+    var.elasticsearch.password: elastic
+    var.kibana.host: kibana-kibana.monitoring:5601
+    var.kibana.username: elastic
+    var.kibana.password: elastic
+
+
+
+
