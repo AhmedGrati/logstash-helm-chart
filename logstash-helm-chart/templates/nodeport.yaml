@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: logstash-logstash
+  type: NodePort
   ports:
     - protocol: TCP
       port: 9600
