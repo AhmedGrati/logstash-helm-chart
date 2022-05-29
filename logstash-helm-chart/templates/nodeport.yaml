@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: 
+spec:
+  selector:
+    app: logstash-logstash
+  ports:
+    - protocol: TCP
+      port: 9600
+      targetPort: 9600
+      nodePort: 30016
