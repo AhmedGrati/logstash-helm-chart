@@ -7,7 +7,7 @@ spec:
     app: logstash-logstash
   type: NodePort
   ports:
-    - protocol: TCP
+    - protocol: UDP
       port: 2055
       targetPort: 2055
       nodePort: 30056
