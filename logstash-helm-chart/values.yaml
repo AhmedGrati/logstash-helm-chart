@@ -29,6 +29,14 @@ logstash:
           codec => netflow
         }
       }
+      output {
+        elasticsearch {
+          hosts => ["http://elastic.database:9200"]
+          user => '${ELASTICSEARCH_USERNAME}'
+          password => '${ELASTICSEARCH_PASSWORD}'
+          index => "logstash"
+        }
+      }
   extraEnvs:
     - name: "ELASTICSEARCH_USERNAME"
       value: elastic
