@@ -31,17 +31,15 @@ logstash:
           }
           type => netflow
         }
-      output {
-        elasticsearch {
-          hosts => ["http://elastic.database:9200"]
-          user => '${ELASTICSEARCH_USERNAME}'
-          password => '${ELASTICSEARCH_PASSWORD}'
-          index => "netflow-logstash"
-        }
-      }
-    ipfix.conf: |
-      input {
         udp {
+          port => 2055
+          codec => netflow {
+            versions => [10]
+            target => ipfix
+          }
+          type => ipfix
+          }
+        tcp {
           port => 2055
           codec => netflow {
             versions => [10]
@@ -49,13 +47,13 @@ logstash:
             }
           type => ipfix
           }
-        }
+      }
       output {
         elasticsearch {
           hosts => ["http://elastic.database:9200"]
           user => '${ELASTICSEARCH_USERNAME}'
           password => '${ELASTICSEARCH_PASSWORD}'
-          index => "elastiflow-flow-codex-0"
+          index => "netflow-logstash"
         }
       }
   extraEnvs:
