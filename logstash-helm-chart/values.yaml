@@ -22,40 +22,6 @@ logstash:
           index => "logstash"
         }
       }
-    netflow.conf: |
-      input {
-        udp {
-          port => 4739
-          codec => netflow {
-            versions => [5, 9]
-          }
-          type => netflow
-        }
-        udp {
-          port => 2055
-          codec => netflow {
-            versions => [10]
-            target => ipfix
-          }
-          type => ipfix
-          }
-        tcp {
-          port => 2055
-          codec => netflow {
-            versions => [10]
-            target => ipfix
-            }
-          type => ipfix
-          }
-      }
-      output {
-        elasticsearch {
-          hosts => ["http://elastic.database:9200"]
-          user => '${ELASTICSEARCH_USERNAME}'
-          password => '${ELASTICSEARCH_PASSWORD}'
-          index => "netflow-%{+YYYY.MM.dd}"
-        }
-      }
   extraEnvs:
     - name: "ELASTICSEARCH_USERNAME"
       value: elastic
