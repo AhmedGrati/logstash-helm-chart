@@ -11,18 +11,6 @@ logstash:
   logstashConfig:
     logstash.yml: |
       http.host: 0.0.0.0
-      modules:
-        - name: netflow
-          var.elasticsearch.hosts: elastic.database:9200
-          var.elasticsearch.username: elastic
-          var.elasticsearch.password: Elastic2Passwordroot
-          var.kibana.host: 10.96.195.40:5601
-          var.kibana.username: elastic
-          var.kibana.password: Elastic2Passwordroot
-          var.kibana.scheme: http
-          var.kibana.ssl.enabled: false
-          var.kibana.ssl.verification_mode: disable
-          var.input.udp.port: 2055
   logstashPipeline:
     uptime.conf: |
       input { exec { command => "uptime" interval => 30 } }
@@ -32,6 +20,13 @@ logstash:
           user => '${ELASTICSEARCH_USERNAME}'
           password => '${ELASTICSEARCH_PASSWORD}'
           index => "logstash"
+        }
+      }
+    netflow.conf: |
+      input {
+        udp {
+          port  => 2055
+          codec => netflow
         }
       }
   extraEnvs:
