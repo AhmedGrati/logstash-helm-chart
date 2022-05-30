@@ -24,12 +24,6 @@ logstash:
       }
   extraEnvs:
     - name: "ELASTICSEARCH_USERNAME"
-      valueFrom:
-        secretKeyRef:
-          name: logstash-elastic-secret
-          key: username
+      value: Elastic2Passwordroot
     - name: "ELASTICSEARCH_PASSWORD"
-      valueFrom:
-        secretKeyRef:
-          name: logstash-elastic-secret
-          key: password
+      value: Elastic2Passwordroot
