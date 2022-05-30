@@ -14,11 +14,11 @@ logstash:
       modules:
         - name: netflow
           var.elasticsearch.hosts: elastic.database:9200
-          var.elasticsearch.username elastic
-          var.elasticsearch.password Elastic2Passwordroot
+          var.elasticsearch.username: elastic
+          var.elasticsearch.password: Elastic2Passwordroot
           var.kibana.host: 10.96.195.40:5601
           var.kibana.username: elastic
-          var.kibana.password: elastic
+          var.kibana.password: Elastic2Passwordroot
           var.kibana.scheme: http
           var.kibana.ssl.enabled: false
           var.kibana.ssl.verification_mode: disable
