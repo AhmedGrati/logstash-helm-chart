@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: logstash-netflow-nodeport-service
+  name: logstash-netflow-v9-udp
 spec:
   selector:
     app: logstash-logstash
