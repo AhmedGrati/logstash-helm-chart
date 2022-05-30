@@ -53,7 +53,7 @@ logstash:
           hosts => ["http://elastic.database:9200"]
           user => '${ELASTICSEARCH_USERNAME}'
           password => '${ELASTICSEARCH_PASSWORD}'
-          index => "netflow-logstash"
+          index => "netflow-%{+YYYY.MM.dd}"
         }
       }
   extraEnvs:
