@@ -25,7 +25,6 @@ logstash:
     netflow.conf: |
       input {
         udp {
-          host => localhost
           port => 4739
           codec => netflow {
             versions => [5, 9]
@@ -33,7 +32,6 @@ logstash:
           type => netflow
         }
         udp {
-          host => localhost
           port => 2055
           codec => netflow {
             versions => [10]
@@ -42,7 +40,6 @@ logstash:
           type => ipfix
           }
         tcp {
-          host => localhost
           port => 2055
           codec => netflow {
             versions => [10]
@@ -56,7 +53,7 @@ logstash:
           hosts => ["http://elastic.database:9200"]
           user => '${ELASTICSEARCH_USERNAME}'
           password => '${ELASTICSEARCH_PASSWORD}'
-          index => "netflow"
+          index => "netflow-logstash"
         }
       }
   extraEnvs:
