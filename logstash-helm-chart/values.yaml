@@ -49,15 +49,6 @@ logstash:
             }
           type => ipfix
           }
-        tcp {
-          port => 2055
-          codec => netflow {
-            versions => [10]
-            target => ipfix
-            }
-          type => ipfix
-          }
-          }
         }
       output {
         elasticsearch {
