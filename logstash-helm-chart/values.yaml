@@ -14,7 +14,7 @@ logstash:
       modules:
         - name: netflow
           var.elasticsearch.hosts: elastic.database:9200
-          var.elasticsearch.username Elastic2Passwordroot
+          var.elasticsearch.username elastic
           var.elasticsearch.password Elastic2Passwordroot
           var.kibana.host: 10.96.195.40:5601
           var.kibana.username: elastic
@@ -36,6 +36,6 @@ logstash:
       }
   extraEnvs:
     - name: "ELASTICSEARCH_USERNAME"
-      value: Elastic2Passwordroot
+      value: elastic
     - name: "ELASTICSEARCH_PASSWORD"
       value: Elastic2Passwordroot
