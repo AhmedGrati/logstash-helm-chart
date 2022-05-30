@@ -60,4 +60,4 @@ logstash:
     - name: "ELASTICSEARCH_USERNAME"
       value: elastic
     - name: "ELASTICSEARCH_PASSWORD"
-      value: Elastic2Passwordroot
+      value: Elastic2Password
